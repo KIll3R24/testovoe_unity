@@ -1,1 +1,1 @@
-C:\project_x\testovoe
+C:\project_x\git\testovoe\testovoe_unity\testovoe

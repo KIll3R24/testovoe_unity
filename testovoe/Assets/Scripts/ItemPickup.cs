@@ -40,6 +40,10 @@ public class ItemPickup : MonoBehaviour
         heldItem = item;
         itemRb = item.GetComponent<Rigidbody>();
         itemRb.isKinematic = true;
+        foreach (Collider col in heldItem.GetComponents<Collider>())
+        {
+            col.enabled = false;
+        }
         item.transform.SetParent(holdPosition);
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
@@ -58,7 +62,10 @@ public class ItemPickup : MonoBehaviour
             itemRb.isKinematic = false;
             heldItem.transform.SetParent(null);
             itemRb.AddForce(Camera.main.transform.forward * 5f, ForceMode.Impulse);
-
+            foreach (Collider col in heldItem.GetComponents<Collider>())
+            {
+                col.enabled = true;
+            }
             heldItem = null;
             dropButton.SetActive(false);
         }
